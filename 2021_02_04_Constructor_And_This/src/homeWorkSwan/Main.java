@@ -11,8 +11,6 @@ public class Main {
         Swans [] group = new Swans [] {one, two, three, four, five};
         Swans fresh = new Swans("Rodrigas", "w", "gold", 40);
 
-        Swans [] groupNew = new Swans [] {one, two, three, four, five};
-
        printArray(bubbleSortArray(group));
        printArray(deleteElement(group, 2));
         printArray(addElement(group, 2, fresh));

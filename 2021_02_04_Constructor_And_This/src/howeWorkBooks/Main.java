@@ -10,7 +10,48 @@ public class Main {
         Books rye = new Books("The Catcher in the Rye", "Jerome Salinger", "roman", 1951);
 
         Books[] array = new Books[]{generation, onTheRoad, alteDama, rye};
+        Books fresh = new Books("The Catcher in the Rye", "Jerome Salinger", "roman", 1954);
+
         printArray(bubbleSortik(array));
+        printArray(deleteElement(array, 2));
+        printArray(addElement(array, 2, fresh));
+        printArray(changeElement(array, 2, fresh));
+    }
+    private static Books[] changeElement(Books[] array, int index, Books fresh) {
+        Books [] result = new Books[array.length];
+        for (int i = 0; i < index ; i++) {
+            result[i] = array [i];
+        }
+        result [index] = fresh;
+        for (int i = index + 1
+             ; i < result.length; i++) {
+            result [i] = array[i];
+        }
+        return result;
+    }
+
+
+    private static Books[] addElement(Books[] array, int index, Books fresh) {
+        Books [] result = new Books[array.length + 1];
+        for (int i = 0; i < index ; i++) {
+            result[i] = array [i];
+        }
+        result [index] = fresh;
+        for (int i = index + 1; i < result.length; i++) {
+            result [i] = array[i - 1];
+        }
+        return result;
+    }
+
+    private static Books[] deleteElement(Books[] array, int index) {
+        Books [] result = new Books[array.length - 1];
+        for (int i = 0; i < index; i++) {
+            result[i] = array[i];
+        }
+        for (int i = index; i < result.length; i++) {
+            result[i] = array[i + 1];
+        }
+        return result;
     }
 
         public static Books[] bubbleSortik (Books[]input) {
