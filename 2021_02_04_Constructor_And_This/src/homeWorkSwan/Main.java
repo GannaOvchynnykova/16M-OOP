@@ -9,11 +9,52 @@ public class Main {
         Swans three = new Swans("Solomon", "m", "gold", 3);
 
         Swans [] group = new Swans [] {one, two, three, four, five};
+        Swans fresh = new Swans("Rodrigas", "w", "gold", 40);
+
+        Swans [] groupNew = new Swans [] {one, two, three, four, five};
 
        printArray(bubbleSortArray(group));
-
-
+       printArray(deleteElement(group, 2));
+        printArray(addElement(group, 2, fresh));
+        printArray(changeElement(group, 2, fresh));
     }
+
+    private static Swans[] changeElement(Swans[] group, int index, Swans fresh) {
+        Swans [] result = new Swans[group.length];
+        for (int i = 0; i < index ; i++) {
+            result[i] = group [i];
+        }
+        result [index] = fresh;
+        for (int i = index + 1; i < result.length; i++) {
+            result [i] = group[i];
+        }
+        return result;
+    }
+
+
+    private static Swans[] addElement(Swans[] group, int index, Swans fresh) {
+        Swans [] result = new Swans[group.length + 1];
+        for (int i = 0; i < index ; i++) {
+            result[i] = group [i];
+        }
+        result [index] = fresh;
+        for (int i = index + 1; i < result.length; i++) {
+            result [i] = group[i - 1];
+        }
+        return result;
+    }
+
+    private static Swans[] deleteElement(Swans[] group, int index) {
+        Swans [] result = new Swans[group.length - 1];
+        for (int i = 0; i < index; i++) {
+            result[i] = group[i];
+        }
+        for (int i = index; i < result.length; i++) {
+            result[i] = group[i + 1];
+        }
+        return result;
+    }
+
     private static Swans[] bubbleSortArray(Swans [] input) {
         boolean unsorted = true;
         while (unsorted) {
