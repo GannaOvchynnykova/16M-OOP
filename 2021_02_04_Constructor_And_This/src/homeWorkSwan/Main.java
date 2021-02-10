@@ -12,6 +12,7 @@ public class Main {
 
        printArray(bubbleSortArray(group));
 
+
     }
     private static Swans[] bubbleSortArray(Swans [] input) {
         boolean unsorted = true;
@@ -36,4 +37,5 @@ public class Main {
         System.out.print((array[array.length - 1]));
         System.out.println(" ]");
     }
+
 }

@@ -26,4 +26,7 @@ public class Swans {
         this.age = age;
         this.color = color;
     }
+    public void toDisplay(){
+        System.out.println("Name" + name + "," + "Age" + age + "," + "Color" + color);
+    }
 }
