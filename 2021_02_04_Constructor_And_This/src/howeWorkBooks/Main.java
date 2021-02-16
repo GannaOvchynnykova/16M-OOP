@@ -12,10 +12,14 @@ public class Main {
         Books[] array = new Books[]{generation, onTheRoad, alteDama, rye};
         Books fresh = new Books("The Catcher in the Rye", "Jerome Salinger", "roman", 1954);
 
+        System.out.println(alphabet.toDisplay());
         printArray(bubbleSortik(array));
         printArray(deleteElement(array, 2));
         printArray(addElement(array, 2, fresh));
         printArray(changeElement(array, 2, fresh));
+        System.out.println(array[2].author);
+        booksPrint(array);
+
     }
     private static Books[] changeElement(Books[] array, int index, Books fresh) {
         Books [] result = new Books[array.length];
@@ -29,7 +33,6 @@ public class Main {
         }
         return result;
     }
-
 
     private static Books[] addElement(Books[] array, int index, Books fresh) {
         Books [] result = new Books[array.length + 1];
@@ -78,5 +81,11 @@ public class Main {
             System.out.print((array[array.length - 1]));
             System.out.println(" ]");
         }
+
+    public static void booksPrint(Books [] array){
+        for (int i = 0; i < array.length ; i++) {
+            System.out.println(array[i].toDisplay());
+        }
+    }
 
     }

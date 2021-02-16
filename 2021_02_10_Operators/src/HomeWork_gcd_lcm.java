@@ -18,6 +18,6 @@ public class HomeWork_gcd_lcm {
                 m = m - n;
             }
         }
-        return m;
+        return n;
     }
 }

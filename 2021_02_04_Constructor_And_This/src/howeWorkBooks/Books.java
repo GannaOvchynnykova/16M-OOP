@@ -1,15 +1,16 @@
 package howeWorkBooks;
 
 public class Books {
-    String title;
-    String ISBN;
-    String author;
-    int year;
-    int numberOfPage;
-    String binding;
-    String genre;
-    double rating;
-    double price;
+    public String title;
+    public String ISBN;
+    public String author;
+    public int year;
+    public int numberOfPage;
+    public String binding;
+    public String genre;
+    public double rating;
+    public double price;
+
 
     public Books(String title, String author, String genre, int year){
         this.title = title;
@@ -33,5 +34,11 @@ public class Books {
 
     public Books(int year) {
         this.year = year;
+    }
+    public String toDisplay(){
+
+        return "Example class books {" + " Author: " + author
+                + "; Name: " + title
+                + "; Age: " + year + "; Middle rating: " + rating + "; Genre " + genre + " }";
     }
 }
