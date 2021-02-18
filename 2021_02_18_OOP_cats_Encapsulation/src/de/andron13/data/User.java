@@ -65,7 +65,7 @@ public class User {
     }
     private int setGeneratorPassword(){
         for (int i = (int) (Math.random()*10); i < 9; i++) {
-            password = i;
+            password += i;
             }
         return password;
     }
