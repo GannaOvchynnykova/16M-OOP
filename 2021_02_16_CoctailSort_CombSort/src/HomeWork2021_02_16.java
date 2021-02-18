@@ -31,6 +31,7 @@ public class HomeWork2021_02_16 {
         }
         return output;
     }
+
     public static void myPrint(int[] array) {
         System.out.print("[ ");
         for (int i = 0; i < array.length-1; i++) {
