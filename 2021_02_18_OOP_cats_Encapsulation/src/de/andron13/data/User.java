@@ -69,7 +69,7 @@ public class User {
             }
         return password;
     }
-    public int getRandomPassword(){
+    public int getGeneratorPassword(){
         return password;
     }
 
@@ -88,14 +88,14 @@ class TestUser{
         User myLovelyUser = new User("Victor", "vici", "ggg@hh.hh", 200.0, 100.0,
                 "02.08.1990", "Ukraine", 5555555, "23-87-45");
         System.out.println(myLovelyUser.getBodyMassIndex());
-        System.out.println(myLovelyUser.getRandomPassword());
+        System.out.println(myLovelyUser.getGeneratorPassword());
         myLovelyUser.setName("Martin");
         System.out.println(myLovelyUser.getName());
-        myLovelyUser.setDateOfBirth("03. 04, 1995");
+        myLovelyUser.setDateOfBirth("03.04.1995");
         System.out.println(myLovelyUser.getDate());
         myLovelyUser.setCountry("Kanada");
         System.out.println(myLovelyUser.getCountry());
-        myLovelyUser.setMobilNumber("54858");
+        myLovelyUser.setMobilNumber("8-054-6784858");
         System.out.println(myLovelyUser.getMobilNumber());
         myLovelyUser.setEmail("gfj@com");
         System.out.println(myLovelyUser.getEmail());
