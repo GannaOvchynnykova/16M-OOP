@@ -87,6 +87,9 @@ class TestUser{
     public static void main(String[] args) {
         User myLovelyUser = new User("Victor", "vici", "ggg@hh.hh", 200.0, 100.0,
                 "02.08.1990", "Ukraine", 5555555, "23-87-45");
+        User badUser = new User("Oleg", "Olly", "hhhhh@com", 176.0, 67,
+                "10.04.1986", "Russia", 99999999, "45-78-99");
+        System.out.println(badUser.getBodyMassIndex());
         System.out.println(myLovelyUser.getBodyMassIndex());
         System.out.println(myLovelyUser.getGeneratorPassword());
         myLovelyUser.setName("Martin");
