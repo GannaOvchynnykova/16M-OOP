@@ -15,9 +15,12 @@ public class User {
     private double height;
     private double weight;
 
+    public User() {
 
-    User(String name, String nick, String email, double height, double weight,
-         String dateOfBirth, String country, int password, String mobilNumber){
+    }
+
+    public User(String name, String nick, String email, double height, double weight,
+                String dateOfBirth, String country, int password, String mobilNumber) {
         this.name = name;
         this.nick = nick;
         this.email = email;
@@ -33,75 +36,165 @@ public class User {
         setGeneratorPassword();
 
     }
-    void setEmail (String newEmail){
+
+    public void setEmail(String newEmail) {
         this.email = newEmail;
     }
-    public String getEmail (){
+
+    public String getEmail() {
         return email;
     }
-    void setMobilNumber(String newNomberMob){
+
+    public void setMobilNumber(String newNomberMob) {
         this.mobilNumber = newNomberMob;
     }
-    public String getMobilNumber(){
+
+    public String getMobilNumber() {
         return mobilNumber;
     }
-    void setCountry (String newCountry){
+
+    public void setCountry(String newCountry) {
         this.country = newCountry;
     }
-    public String getCountry (){
+
+    public String getCountry() {
         return country;
     }
-    void setDateOfBirth (String newDate){
+
+    public void setDateOfBirth(String newDate) {
         this.dateOfBirth = newDate;
     }
-    public String getDate (){
+
+    public String getDate() {
         return dateOfBirth;
     }
-    void setName (String newName){
+
+    public void setName(String newName) {
         this.name = newName;
     }
-    public String getName (){
+
+    public String getName() {
         return name;
     }
-    private int setGeneratorPassword(){
-        for (int i = (int) (Math.random()*10); i < 9; i++) {
+
+    private int setGeneratorPassword() {
+        for (int i = (int) (Math.random() * 10); i < 9; i++) {
             password += i;
-            }
-        return password;
-    }
-    public int getGeneratorPassword(){
+        }
         return password;
     }
 
-    private void setBodyMassIndex(){
+    public int getGeneratorPassword() {
+        return password;
+    }
+
+    private void setBodyMassIndex() {
         double h = height / 100;
-        bodyMassIndex = weight/(h * h);
+        bodyMassIndex = weight / (h * h);
     }
 
-    public double getBodyMassIndex(){
+    public double getBodyMassIndex() {
         return bodyMassIndex;
     }
-}
 
-class TestUser{
-    public static void main(String[] args) {
-        User myLovelyUser = new User("Victor", "vici", "ggg@hh.hh", 200.0, 100.0,
-                "02.08.1990", "Ukraine", 5555555, "23-87-45");
-        User badUser = new User("Oleg", "Olly", "hhhhh@com", 176.0, 67,
-                "10.04.1986", "Russia", 99999999, "45-78-99");
-        System.out.println(badUser.getBodyMassIndex());
-        System.out.println(myLovelyUser.getBodyMassIndex());
-        System.out.println(myLovelyUser.getGeneratorPassword());
-        myLovelyUser.setName("Martin");
-        System.out.println(myLovelyUser.getName());
-        myLovelyUser.setDateOfBirth("03.04.1995");
-        System.out.println(myLovelyUser.getDate());
-        myLovelyUser.setCountry("Kanada");
-        System.out.println(myLovelyUser.getCountry());
-        myLovelyUser.setMobilNumber("8-054-6784858");
-        System.out.println(myLovelyUser.getMobilNumber());
-        myLovelyUser.setEmail("gfj@com");
-        System.out.println(myLovelyUser.getEmail());
+    public String toDisplay() {
+        return "{ " + "Name = " + name + "; Nick = " + nick + "; Email = " + email + "; Height = " + height + "; Weight = " +
+                weight + "; Date of birth = " + dateOfBirth + "; Country = " + country + "; Password = " +
+                password + "; Mobile Number = " + mobilNumber + "}";
+    }
 
+    public static void arrayToDisplay(User[] users) {
+        for (int i = 0; i < users.length; i++) {
+            System.out.println(users[i].toDisplay());
+        }
+    }
+
+    public static void printArray(User[] users) {
+        System.out.print("[ ");
+        for (int i = 0; i < users.length - 1; i++) {
+            System.out.print(users[i].height + " , ");
+        }
+        System.out.println(" ]");
+    }
+
+    public static User[] coctailSort(User[] users) {
+        int start = 0;
+        int end = users.length - 1;
+        while (start <= end) {
+            boolean swap = false;
+            for (int i = start; i < end; i++) {
+                if (users[i].height > users[i + 1].height) {
+                    double temp = users[i].height;
+                    users[i].height = users[i + 1].height;
+                    users[i + 1].height = temp;
+                    swap = true;
+                }
+            }
+            end--;
+            for (int i = end; i > start; i--) {
+                if (users[i].height < users[i - 1].height) {
+                    double temp = users[i].height;
+                    users[i].height = users[i - 1].height;
+                    users[i - 1].height = temp;
+                    swap = true;
+                }
+            }
+            start++;
+            if (!swap) {
+                break;
+            }
+        }
+        return users;
+    }
+
+    public static User[] addElement(User[] users, int index, User user) {
+        User[] result = new User[users.length + 1];
+        for (int i = 0; i < index; i++) {
+            result[i] = users[i];
+        }
+        result[index] = user;
+        for (int i = index + 1; i < result.length; i++) {
+            result[i] = users[i - 1];
+        }
+        return result;
+    }
+
+    public static User[] deleteElement(User[] users, int index) {
+        User[] result = new User[users.length - 1];
+        for (int i = 0; i < index; i++) {
+            result[i] = users[i];
+        }
+        for (int i = index; i < result.length; i++) {
+            result[i] = users[i + 1];
+        }
+        return result;
+    }
+
+    public static User[] updateElement(User[] users, int index, User user) {
+        User[] result = new User[users.length];
+        for (int i = 0; i < index; i++) {
+            result[i] = users[i];
+        }
+        result[index] = user;
+        for (int i = index + 1; i < result.length; i++) {
+            result[i] = users[i];
+        }
+        return result;
+    }
+
+    public static User[] bubbleSort(User[] users) {
+        boolean unsorted = true;
+        while (unsorted) {
+            unsorted = false;
+            for (int i = 0; i < users.length - 1; i++) {
+                if (users[i].height > users[i + 1].height) {
+                    User temp = users[i];
+                    users[i] = users[i + 1];
+                    users[i + 1] = temp;
+                    unsorted = true;
+                }
+            }
+        }
+        return users;
     }
 }

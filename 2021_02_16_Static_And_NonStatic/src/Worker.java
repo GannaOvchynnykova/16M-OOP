@@ -4,18 +4,21 @@ public class Worker {
     int workerID;
     static int count = 0;
 
-    public Worker (){
+    public Worker() {
 
     }
-    public Worker(int workerID){
+
+    public Worker(int workerID) {
         this.workerID = workerID;
     }
-    public Worker(String name){
+
+    public Worker(String name) {
         this.name = name;
-        workerID=count;
+        workerID = count;
         count++;
     }
-    static class TestWorker{
+
+    static class TestWorker {
         public static void main(String[] args) {
             Worker worker1 = new Worker();
             System.out.println(worker1.workerID);

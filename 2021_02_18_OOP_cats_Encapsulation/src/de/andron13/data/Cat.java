@@ -6,47 +6,49 @@ public class Cat {
     private String breed;
     private boolean pass;
 
-    Cat (String name, int age, String breed){
+    public Cat(String name, int age, String breed) {
         this.name = name;
         this.age = age;
         this.breed = breed;
     }
 
-    void move(){
+    public void move() {
         System.out.println("I am move!!!");
     }
-    void setName(String newName){
+
+    public void setName(String newName) {
         this.name = newName;
     }
-    void setAge(int newAge){
+
+    public void setAge(int newAge) {
         this.age = newAge;
     }
-    void setBreed(String newBreed){
+
+    public void setBreed(String newBreed) {
         this.breed = newBreed;
     }
-    void setPass (boolean newPass){
+
+    public void setPass(boolean newPass) {
         this.pass = newPass;
     }
-    public boolean isPass(){
+
+    public boolean isPass() {
         return pass;
     }
-    public String getName (){
+
+    public String getName() {
         return name;
     }
-    public String getBreed (){
+
+    public String getBreed() {
         return breed;
     }
-    public int getAge(){
+
+    public int getAge() {
         return age;
+    }
+    public String toDisplay() {
+        return "{ " + "Name " + name + "; Age " + age + "; Breed" + breed + "; Pass = " + pass + "}";
     }
 }
 
-class TestCat{
-    public static void main(String[] args) {
-        Cat catchen = new Cat("Barsik", 1, "Pers");
-        catchen.move();
-        catchen.setName("Daria");
-        System.out.println(catchen.isPass());
-        System.out.println(catchen.getName());
-    }
-}
