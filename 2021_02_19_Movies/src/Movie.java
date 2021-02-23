@@ -138,6 +138,23 @@ public class Movie {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", date='" + date + '\'' +
+                ", director='" + director + '\'' +
+                ", studioName='" + studioName + '\'' +
+                ", announce='" + announce + '\'' +
+                ", genre='" + genre + '\'' +
+                ", budget=" + budget +
+                ", rating=" + rating +
+                ", peopleCount=" + peopleCount +
+                ", minutes=" + minutes +
+                ", subtitles=" + subtitles +
+                '}';
+    }
+
     public static void movieArrayGenreToDisplay(Movie [] films, String lovelyGenre){
         for (int i = 0; i < films.length ; i++) {
            // if (films[i].genre.equals("Comedy")){
@@ -145,5 +162,6 @@ public class Movie {
                 System.out.println(films[i].toDisplay());
             }
         }
+
     }
 
