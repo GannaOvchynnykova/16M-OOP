@@ -15,6 +15,7 @@ public class Student extends Person {
         super(firstName, secondName, uniID, dateOfBirth, gender, beginWith, numberMob, address, age);
     }
 
+    @Override
     public String toString() {
         return "Student{" +
                 "firstName='" + getFirstName() + '\'' +

@@ -107,4 +107,12 @@ public class StartApplication {
         return input;
     }
 
+    public static void printArray(Person[] input) {
+        System.out.print("[ ");
+        for (int i = 0; i < input.length - 1; i++) {
+            System.out.print(input[i].age + " , ");
+        }
+        System.out.println(" ]");
+    }
+
 }

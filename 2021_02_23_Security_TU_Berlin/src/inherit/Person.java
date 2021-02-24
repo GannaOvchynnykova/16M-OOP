@@ -119,6 +119,7 @@ public class Person {
                 ", beginWith='" + beginWith + '\'' +
                 ", numberMob='" + numberMob + '\'' +
                 ", address='" + address + '\'' +
+                ", age='" + age + '\'' +
                 '}';
     }
 }
