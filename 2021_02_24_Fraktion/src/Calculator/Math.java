@@ -3,9 +3,42 @@ package Calculator;
 import Data.Fraction;
 
 public class Math {
+    public static Fraction squareRoot(Fraction a){
+        int cNumerator = 0;
+        int cDenominator = 0;
+        for (int i = 1; i <= 99; i++) {
+            if (a.getNumerator() / i == i){
+                cNumerator = i;
+            }
+        }
+        for (int i = 1; i <= 99; i++) {
+            if (a.getDenominator() / i == i){
+                cDenominator = i;
+            }
+        }
+
+        Fraction c = new Fraction(cNumerator, cDenominator);
+        return c;
+    }
+
+    public static Fraction exponentiation (Fraction a, int exponent){
+        int cNumerator = 1;
+        int cDenominator = 1;
+        for (int i = 1; i <= exponent; i++) {
+            cNumerator = cNumerator * a.getNumerator();
+        }
+        for (int i = 1; i <= exponent; i++) {
+            cDenominator = cDenominator * a.getDenominator();
+        }
+
+        Fraction c = new Fraction(cNumerator, cDenominator);
+        return c;
+    }
+
     public static Fraction division (Fraction a, Fraction b){
         int cNumerator;
         int cDenominator;
+
         cNumerator = (a.getNumerator()*b.getDenominator());
         cDenominator = (a.getDenominator()*b.getNumerator());
 
@@ -16,12 +49,16 @@ public class Math {
     public static Fraction multiplication (Fraction a, Fraction b){
         int cNumerator;
         int cDenominator;
+
         cNumerator = (a.getNumerator() * b.getNumerator());
         cDenominator = (a.getDenominator() * b.getDenominator());
+
         int reduction = gcdRecursionAlgorithm(cNumerator, cDenominator);
+
         cNumerator = cNumerator / reduction;
         cDenominator = cDenominator / reduction;
-                Fraction c = new Fraction(cNumerator, cDenominator);
+
+        Fraction c = new Fraction(cNumerator, cDenominator);
         return c;
     }
 
@@ -41,7 +78,6 @@ public class Math {
         int cDenominator;
 
         cDenominator = leastCommonMultiple(a.getDenominator(), b.getDenominator()); //polychili c
-
         cNumerator = (a.getNumerator() * b.getDenominator()) + (b.getNumerator() * a.getDenominator()); //summa chislitel
 
         Fraction c = new Fraction(cNumerator, cDenominator);
@@ -59,5 +95,4 @@ public class Math {
     public static int leastCommonMultiple(int aDenominator, int bDenominator) {
         return aDenominator / gcdRecursionAlgorithm(aDenominator, bDenominator) * bDenominator;
     }
-
 }
