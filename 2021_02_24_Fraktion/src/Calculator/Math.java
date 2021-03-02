@@ -42,6 +42,11 @@ public class Math {
         cNumerator = (a.getNumerator()*b.getDenominator());
         cDenominator = (a.getDenominator()*b.getNumerator());
 
+        int reduction = gcdRecursionAlgorithm(cNumerator, cDenominator);
+
+        cNumerator = cNumerator / reduction;
+        cDenominator = cDenominator / reduction;
+
         Fraction c = new Fraction(cNumerator, cDenominator);
         return c;
     }
@@ -69,6 +74,11 @@ public class Math {
         cDenominator = leastCommonMultiple(a.getDenominator(), b.getDenominator());
         cNumerator = (a.getNumerator()*a.getDenominator() - b.getNumerator());
 
+        int reduction = gcdRecursionAlgorithm(cNumerator, cDenominator);
+
+        cNumerator = cNumerator / reduction;
+        cDenominator = cDenominator / reduction;
+
         Fraction c = new Fraction(cNumerator, cDenominator);
         return c;
     }
@@ -79,6 +89,11 @@ public class Math {
 
         cDenominator = leastCommonMultiple(a.getDenominator(), b.getDenominator()); //polychili c
         cNumerator = (a.getNumerator() * b.getDenominator()) + (b.getNumerator() * a.getDenominator()); //summa chislitel
+
+        int reduction = gcdRecursionAlgorithm(cNumerator, cDenominator);
+
+        cNumerator = cNumerator / reduction;
+        cDenominator = cDenominator / reduction;
 
         Fraction c = new Fraction(cNumerator, cDenominator);
         return c;
