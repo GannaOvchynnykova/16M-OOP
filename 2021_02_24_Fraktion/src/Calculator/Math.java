@@ -3,7 +3,7 @@ package Calculator;
 import Data.Fraction;
 
 public class Math {
-    public static Fraction squareRoot(Fraction a){
+    public static Fraction squareRoot(Fraction a){  // kvadratnii koren
         int cNumerator = 0;
         int cDenominator = 0;
         for (int i = 1; i <= 99; i++) {
@@ -21,7 +21,7 @@ public class Math {
         return c;
     }
 
-    public static Fraction exponentiation (Fraction a, int exponent){
+    public static Fraction exponentiation (Fraction a, int exponent){  // vosvedenie v stepen
         int cNumerator = 1;
         int cDenominator = 1;
         for (int i = 1; i <= exponent; i++) {
@@ -35,7 +35,7 @@ public class Math {
         return c;
     }
 
-    public static Fraction division (Fraction a, Fraction b){
+    public static Fraction division (Fraction a, Fraction b){  // delenie
         int cNumerator;
         int cDenominator;
 
@@ -46,7 +46,7 @@ public class Math {
         return c;
     }
 
-    public static Fraction multiplication (Fraction a, Fraction b){
+    public static Fraction multiplication (Fraction a, Fraction b){ // ymnojenie
         int cNumerator;
         int cDenominator;
 
@@ -62,7 +62,7 @@ public class Math {
         return c;
     }
 
-    public static Fraction subtraction (Fraction a, Fraction b){
+    public static Fraction subtraction (Fraction a, Fraction b){  // vichitanie
         int cNumerator;
         int cDenominator;
 
@@ -73,7 +73,7 @@ public class Math {
         return c;
     }
 
-    public static Fraction addition(Fraction a, Fraction b){
+    public static Fraction addition(Fraction a, Fraction b){  // summa
         int cNumerator;
         int cDenominator;
 

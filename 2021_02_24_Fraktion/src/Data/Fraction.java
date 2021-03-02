@@ -24,7 +24,7 @@ public class Fraction {
 
     @Override
     public String toString() {
-        return "Faction{" +
+        return "Fraction{" +
                 "numerator=" + numerator +
                 ", denominator=" + denominator +
                 '}';
