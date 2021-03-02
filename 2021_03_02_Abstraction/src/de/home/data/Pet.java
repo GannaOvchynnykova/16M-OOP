@@ -1,6 +1,7 @@
 package de.home.data;
 
 abstract class Pet {
+    private String sort;
     private String name;
     private int age;
     private String breed;
@@ -10,7 +11,8 @@ abstract class Pet {
     public Pet() {
     }
 
-    public Pet(String name, int age, String breed, boolean pass, String color) {
+    public Pet(String sort, String name, int age, String breed, boolean pass, String color) {
+        this.sort = sort;
         this.name = name;
         this.age = age;
         this.breed = breed;
@@ -26,10 +28,13 @@ abstract class Pet {
 
     abstract void sleeps();
 
+    abstract void swim();
+
     @Override
     public String toString() {
         return "Pet{" +
-                "name='" + name + '\'' +
+                "sort='" + sort + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", breed='" + breed + '\'' +
                 ", pass=" + pass +

@@ -4,10 +4,10 @@ public class PetTest {
     public static void main(String[] args) {
         /* de.home.data.Pet pet = new de.home.data.Pet(); */ //imposible
 
-        Duck duck = new Duck("Lera", 2, "Selesen", true, "gold");
-        Dog dog = new Dog("Antonio", 6, "Labrador", true, "black");
-        Cat cat = new Cat("Matilda", 3, "Siam", true, "white");
-        Dragon dragon = new Dragon("Artem", 158, "Silver", false, "silver");
+        Duck duck = new Duck("Duck", "Lera", 2, "Selesen", true, "gold");
+        Dog dog = new Dog("Dog","Antonio", 6, "Labrador", true, "black");
+        Cat cat = new Cat("Cat","Matilda", 3, "Siam", true, "white");
+        Dragon dragon = new Dragon("Dragon", "Zmey Gorynych", 158, "Silver", false, "black");
 
         dragon.eats();
         dragon.moves();

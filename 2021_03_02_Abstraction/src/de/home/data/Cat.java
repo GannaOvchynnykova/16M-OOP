@@ -1,8 +1,8 @@
 package de.home.data;
 
 public class Cat extends Pet {
-    public Cat(String name, int age, String breed, boolean pass, String color) {
-        super(name, age, breed, pass, color);
+    public Cat(String sort, String name, int age, String breed, boolean pass, String color) {
+        super(sort, name, age, breed, pass, color);
     }
 
     @Override
@@ -23,6 +23,11 @@ public class Cat extends Pet {
     @Override
     public void sleeps() {
         System.out.println("Guten Nacht my cats");
+    }
+
+    @Override
+    void swim() {
+        System.out.println("Not!!! I dont like swim!");
     }
 
     @Override

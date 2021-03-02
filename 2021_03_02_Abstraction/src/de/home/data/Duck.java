@@ -1,12 +1,8 @@
 package de.home.data;
 
 public class Duck extends Pet {
-    public Duck(String name, int age, String breed, boolean pass, String color) {
-        super(name, age, breed, pass, color);
-    }
-
-    void swims() {
-        System.out.println("Im swimming");
+    public Duck(String sort, String name, int age, String breed, boolean pass, String color) {
+        super(sort, name, age, breed, pass, color);
     }
 
     @Override
@@ -21,6 +17,12 @@ public class Duck extends Pet {
 
     @Override
     public void sleeps() {
+        System.out.println("Im duck and I can sleep everywhere");
+    }
+
+    @Override
+    void swim() {
+        System.out.println("Im duck and I can swimming");
     }
 
     @Override

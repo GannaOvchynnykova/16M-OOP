@@ -2,8 +2,8 @@ package de.home.data;
 
 public class Dragon extends Pet {
 
-    public Dragon (String name, int age, String breed, boolean pass, String color){
-        super(name, age, breed, pass, color);
+    public Dragon(String sort, String name, int age, String breed, boolean pass, String color) {
+        super(sort, name, age, breed, pass, color);
     }
 
     @Override
@@ -26,6 +26,11 @@ public class Dragon extends Pet {
     void sleeps() {
         System.out.println("Im dragon and I like to sleep");
 
+    }
+
+    @Override
+    void swim() {
+        System.out.println("Im Dragon and Yes, I can sleep!");
     }
 
     @Override
