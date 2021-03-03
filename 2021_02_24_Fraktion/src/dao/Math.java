@@ -1,6 +1,6 @@
-package Calculator;
+package dao;
 
-import Data.Fraction;
+import data.Fraction;
 
 public class Math {
     public static Fraction squareRoot(Fraction a){  // kvadratnii koren
@@ -72,7 +72,8 @@ public class Math {
         int cDenominator;
 
         cDenominator = leastCommonMultiple(a.getDenominator(), b.getDenominator());
-        cNumerator = (a.getNumerator()*a.getDenominator() - b.getNumerator());
+        cNumerator = a.getNumerator()* cDenominator /
+                a.getDenominator() - b.getNumerator() * cDenominator / b.getDenominator();
 
         int reduction = gcdRecursionAlgorithm(cNumerator, cDenominator);
 
@@ -88,7 +89,8 @@ public class Math {
         int cDenominator;
 
         cDenominator = leastCommonMultiple(a.getDenominator(), b.getDenominator()); //polychili c
-        cNumerator = (a.getNumerator() * b.getDenominator()) + (b.getNumerator() * a.getDenominator()); //summa chislitel
+        cNumerator = a.getNumerator() * cDenominator /
+                a.getDenominator() + b.getNumerator() * cDenominator / b.getDenominator(); //summa chislitel
 
         int reduction = gcdRecursionAlgorithm(cNumerator, cDenominator);
 

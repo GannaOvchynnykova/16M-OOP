@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 public class Fraction {
     private int numerator;
@@ -11,7 +11,7 @@ public class Fraction {
 
     public Fraction(int numerator) {
         this.numerator = numerator;
-        denominator = 1;
+        this.denominator = 1;
     }
 
     public int getNumerator() {

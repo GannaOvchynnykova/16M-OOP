@@ -1,7 +1,7 @@
 package start;
 
-import Calculator.Math;
-import Data.Fraction;
+import dao.Math;
+import data.Fraction;
 
 public class Main {
     public static void main(String[] args) {
