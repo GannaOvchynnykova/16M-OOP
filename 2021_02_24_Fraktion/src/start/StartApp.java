@@ -3,7 +3,7 @@ package start;
 import dao.Math;
 import data.Fraction;
 
-public class Main {
+public class StartApp {
     public static void main(String[] args) {
         Fraction myFirstLovelyFraction = new Fraction(9, 100);
         System.out.println(myFirstLovelyFraction);

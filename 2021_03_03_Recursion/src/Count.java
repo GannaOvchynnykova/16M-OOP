@@ -14,6 +14,7 @@ public class Count {
         System.out.println(count7(717));// → 2
         System.out.println(count7(7));// → 1
         System.out.println(count7(123));// → 0
+        System.out.println(count7(71877));// → 3
     }
 
     private static int count7(int n) {
@@ -33,6 +34,6 @@ public class Count {
     private static int firstNumber(int i) {
         if (i / 10 == 0)
             return i;
-        return firstNumber(i / 10);
+        return   firstNumber(i / 10);
     }
 }
