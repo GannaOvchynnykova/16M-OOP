@@ -1,11 +1,11 @@
 package gannao.data;
 
 public class Books {
-    private long isbn;
-    private String author;
-    private String title;
-    private int countPages;
-    private double pricePerPage;
+    long isbn;
+    String author;
+    String title;
+    int countPages;
+    double pricePerPage;
 
     public Books() {
         author = "No author!";
