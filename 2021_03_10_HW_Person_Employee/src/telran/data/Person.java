@@ -1,17 +1,21 @@
 package telran.data;
 
-public class Person {
+public abstract class Person {
     String name;
     long id;
     int age;
 
     public Person() {
+        this.name = "Not defined";
     }
 
     public Person(String name, long id, int age) {
-        this.name = name;
-        this.id = id;
-        this.age = age;
+        if (name != null)
+            this.name = name;
+        else
+            this.name = "Not defined!";
+        setId(id);
+        setAge(age);
     }
 
     public String getName() {
@@ -19,7 +23,10 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null)
+            this.name = name;
+        else
+            System.out.println("Wrong name");
     }
 
     public long getId() {
@@ -27,7 +34,10 @@ public class Person {
     }
 
     public void setId(long id) {
-        this.id = id;
+        if (id > 0)
+            this.id = id;
+        else
+            System.out.println("Wrong id");
     }
 
     public int getAge() {
@@ -35,7 +45,10 @@ public class Person {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if (age > 18 && age < 85)
+            this.age = age;
+        else
+            System.out.println("Wrong age");
     }
 
     @Override

@@ -10,8 +10,8 @@ public class SalesMan extends Employee {
     public SalesMan(String name, long id, int age, String company, double baseSalary,
                     double totalSales, int bonuse) {
         super(name, id, age, company, baseSalary);
-        this.totalSales = totalSales;
-        this.bonuse = bonuse;
+        setTotalSales(totalSales);
+        setBonuse(bonuse);
     }
 
     public double getTotalSales() {
@@ -19,7 +19,10 @@ public class SalesMan extends Employee {
     }
 
     public void setTotalSales(double totalSales) {
-        this.totalSales = totalSales;
+        if (totalSales > 0)
+            this.totalSales = totalSales;
+        else
+            System.out.println("Wrong totalSales");
     }
 
     public int getBonuse() {
@@ -27,7 +30,10 @@ public class SalesMan extends Employee {
     }
 
     public void setBonuse(int bonuse) {
-        this.bonuse = bonuse;
+        if (bonuse > 0)
+            this.bonuse = bonuse;
+        else
+            System.out.println("Wrong bonuse");
     }
 
     @Override
@@ -41,5 +47,10 @@ public class SalesMan extends Employee {
                 ", totalSales=" + totalSales +
                 ", bonuse=" + bonuse +
                 '}';
+    }
+
+    @Override
+    public double calcPrice() {
+        return baseSalary + ((totalSales / 100) * bonuse);
     }
 }

@@ -1,16 +1,20 @@
 package telran.data;
 
-public class Employee extends Person {
+public abstract class Employee extends Person {
     String company; //название компани
     double baseSalary; //базовая зарплата в евро
 
     public Employee() {
+        this.company = "Not defined";
     }
 
     public Employee(String name, long id, int age, String company, double baseSalary) {
         super(name, id, age);
-        this.company = company;
-        this.baseSalary = baseSalary;
+        if (company != null)
+            this.company = company;
+        else
+            this.company = "Not defined!";
+        setBaseSalary(baseSalary);
     }
 
     public String getCompany() {
@@ -18,7 +22,10 @@ public class Employee extends Person {
     }
 
     public void setCompany(String company) {
-        this.company = company;
+        if (company != null)
+            this.company = company;
+        else
+            System.out.println("Wrong company");
     }
 
     public double getBaseSalary() {
@@ -26,7 +33,10 @@ public class Employee extends Person {
     }
 
     public void setBaseSalary(double baseSalary) {
-        this.baseSalary = baseSalary;
+        if (baseSalary > 0)
+            this.baseSalary = baseSalary;
+        else
+            System.out.println("Wrong baseSalary");
     }
 
     @Override
@@ -39,4 +49,6 @@ public class Employee extends Person {
                 ", baseSalary=" + baseSalary +
                 '}';
     }
+
+    public abstract double calcPrice();
 }
