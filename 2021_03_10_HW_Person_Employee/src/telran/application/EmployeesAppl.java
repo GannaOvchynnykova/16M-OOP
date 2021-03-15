@@ -18,7 +18,7 @@ public class EmployeesAppl {
         Employee wageEmployee3 = new WageEmployee("Pik", 348917896, 23, "Apple", 2.000, 140, 12);
 
         Employee[] emps = new Employee[]{manager1, manager2, manager3, salesMan1, salesMan2, salesMan3, wageEmployee1, wageEmployee2, wageEmployee3};
-        printAllEmployees(emps);
+        //printAllEmployees(emps);
 
         double result = getSumSalaryAllEmployee(emps);
         System.out.println("Sum Salary All Employee = " + result + " euro");

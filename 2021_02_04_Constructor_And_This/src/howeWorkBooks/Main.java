@@ -83,7 +83,7 @@ public class Main {
         }
 
     public static void booksPrint(Books [] array){
-        for (int i = 0; i < array.length ; i++) {
+        for (int i = 0; i < array.length; i++) {
             System.out.println(array[i].toDisplay());
         }
     }
