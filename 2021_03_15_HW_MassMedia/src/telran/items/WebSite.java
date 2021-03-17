@@ -6,8 +6,10 @@ public class WebSite extends MassMedia {
 
     public WebSite(String name, String url, String author) {
         super(name);
-        this.url = url;
-        this.author = author;
+        if (url != null && !url.isEmpty())
+            this.url = url;
+        if (author != null && !author.isEmpty())
+            this.author = author;
     }
 
     public WebSite() {
@@ -18,7 +20,9 @@ public class WebSite extends MassMedia {
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        if (url != null && !url.isEmpty())
+            this.url = url;
+        else System.out.println("Wrong url");
     }
 
     public String getAuthor() {
@@ -26,7 +30,9 @@ public class WebSite extends MassMedia {
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        if (author != null && !author.isEmpty())
+            this.author = author;
+        else System.out.println("Wrong author");
     }
 
     @Override
@@ -37,4 +43,13 @@ public class WebSite extends MassMedia {
                 ", author='" + author + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WebSite)) return false;
+        WebSite webSite = (WebSite) o;
+        return getUrl().equals(webSite.getUrl()) && getAuthor().equals(webSite.getAuthor());
+    }
+
 }

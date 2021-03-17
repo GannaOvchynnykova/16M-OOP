@@ -12,9 +12,9 @@ public class Journal extends MassMedia implements IPrintable {
 
     public Journal(String name, int issueNumber, int numberOfPages, boolean glossy) {
         super(name);
-        this.issueNumber = issueNumber;
-        this.numberOfPages = numberOfPages;
-        this.glossy = glossy;
+        setIssueNumber(issueNumber);
+        setNumberOfPages(numberOfPages);
+        setGlossy(glossy);
     }
 
     public int getIssueNumber() {
@@ -22,7 +22,9 @@ public class Journal extends MassMedia implements IPrintable {
     }
 
     public void setIssueNumber(int issueNumber) {
+        if (issueNumber > 0)
         this.issueNumber = issueNumber;
+        else System.out.println("Wrong a jornal issueNumber");
     }
 
     public int getNumberOfPages() {
@@ -30,7 +32,9 @@ public class Journal extends MassMedia implements IPrintable {
     }
 
     public void setNumberOfPages(int numberOfPages) {
+        if (numberOfPages > 0)
         this.numberOfPages = numberOfPages;
+        else System.out.println("Wrong a jornal numberOf Pages");
     }
 
     public boolean isGlossy() {
@@ -55,4 +59,13 @@ public class Journal extends MassMedia implements IPrintable {
     public void print() {
         System.out.println("Journal ready to print!");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Journal)) return false;
+        Journal journal = (Journal) o;
+        return getIssueNumber() == journal.getIssueNumber() && getNumberOfPages() == journal.getNumberOfPages() && isGlossy() == journal.isGlossy();
+    }
+
 }

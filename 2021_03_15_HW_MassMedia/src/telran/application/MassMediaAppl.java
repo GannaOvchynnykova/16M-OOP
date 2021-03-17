@@ -21,28 +21,53 @@ public class MassMediaAppl {
         };
 
         displayPrintable(array);
+
         IPrintable[] arr = getPrintableElements(array);
         System.out.println(Arrays.toString(arr));
     }
 
-    private static IPrintable[] getPrintableElements(MassMedia[] array) {
-        IPrintable[] arr = new IPrintable[array.length];
-        for (MassMedia i : array) {
-            if (i instanceof IPrintable) {
-                IPrintable temp = (IPrintable) i;
-                temp.print();
-                System.out.println(i);
+    public static IPrintable[] getPrintableElements(MassMedia[] array) {
+        if (array == null || array.length == 0) {
+            System.out.println("Wrong MassMedia array");
+            return null;
+        }
+        int length = countPrintable(array);
+        IPrintable[] arr = new IPrintable[length];
+        // for (int i = 0, j = 0; i < array.length; i++){         // 1 variant
+        //if (array [i] instanceof IPrintable)
+        // arr[j++] = (IPrintable) array [i];
+        //}
+        //return arr;
+        int i = 0;
+        for (MassMedia m : array) {                 // 2 variant
+            if (m instanceof IPrintable) {
+                // arr[i++] = (IPrintable) m;     tak i tak ili tak
+                arr[i] = (IPrintable) m;
+                i++;
             }
         }
         return arr;
     }
 
-    private static void displayPrintable(MassMedia[] array) {
+    public static int countPrintable(MassMedia[] array) {
+        int count = 0;
+        if (array == null || array.length == 0)
+            System.out.println("Wrong !!!");
+        for (MassMedia i: array) {
+            if (i instanceof IPrintable)
+                count++;
+        }
+        return count;
+    }
+
+    public static void displayPrintable(MassMedia[] array) {
+        if (array == null || array.length == 0) {
+            System.out.println("Wrong MassMadia array");
+            return;
+        }
         for (MassMedia i : array) {
             if (i instanceof IPrintable) {
-                IPrintable temp = (IPrintable) i;
-                temp.print();
-                System.out.println(i);
+                ((IPrintable) i).print();
             }
         }
     }

@@ -8,8 +8,8 @@ public class Newspaper extends MassMedia implements IPrintable {
 
     public Newspaper(String name, int issueNumber, int numberOfPages) {
         super(name);
-        this.issueNumber = issueNumber;
-        this.numberOfPages = numberOfPages;
+        setIssueNumber(issueNumber);
+        setNumberOfPages(numberOfPages);
     }
 
     public Newspaper() {
@@ -20,7 +20,9 @@ public class Newspaper extends MassMedia implements IPrintable {
     }
 
     public void setIssueNumber(int issueNumber) {
-        this.issueNumber = issueNumber;
+        if (issueNumber > 0)
+            this.issueNumber = issueNumber;
+        else System.out.println("Wrong a newspaper issueNumber");
     }
 
     public int getNumberOfPages() {
@@ -28,7 +30,9 @@ public class Newspaper extends MassMedia implements IPrintable {
     }
 
     public void setNumberOfPages(int numberOfPages) {
-        this.numberOfPages = numberOfPages;
+        if (numberOfPages > 0)
+            this.numberOfPages = numberOfPages;
+        else System.out.println("Wrong a newspaper numberOfPages");
     }
 
     @Override
@@ -45,4 +49,13 @@ public class Newspaper extends MassMedia implements IPrintable {
     public void print() {
         System.out.println("Newspaper ready to print");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Newspaper)) return false;
+        Newspaper newspaper = (Newspaper) o;
+        return getIssueNumber() == newspaper.getIssueNumber() && getNumberOfPages() == newspaper.getNumberOfPages();
+    }
+
 }

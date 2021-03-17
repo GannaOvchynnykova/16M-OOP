@@ -5,10 +5,12 @@ public class NewsPortal extends MassMedia {
 
     public NewsPortal(String name, String url) {
         super(name);
+        if (url != null && !url.isEmpty())
         this.url = url;
     }
 
     public NewsPortal() {
+        url = "undefined";
     }
 
     public String getUrl() {
@@ -16,7 +18,9 @@ public class NewsPortal extends MassMedia {
     }
 
     public void setUrl(String url) {
+        if (url != null && !url.isEmpty())
         this.url = url;
+        else System.out.println("Wrong url");
     }
 
     @Override
@@ -26,4 +30,13 @@ public class NewsPortal extends MassMedia {
                 ", url='" + url + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NewsPortal)) return false;
+        NewsPortal that = (NewsPortal) o;
+        return getUrl().equals(that.getUrl());
+    }
+
 }
