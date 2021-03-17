@@ -5,8 +5,6 @@ public class StringPracticeHw {
             return null;
         char[] charArray = str.toCharArray();
         String result = "";
-        if (str.isEmpty() || str == null)
-            return null;
         for (int i = charArray.length - 1; i >= 0; i--) {
             result += charArray[i];
         }
