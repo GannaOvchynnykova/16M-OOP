@@ -2,6 +2,9 @@ package telran.items;
 
 import telran.interfaces.IList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyArray implements IList {
     private static final int INITIAL_SIZE = 16;
     private Object[] array;
@@ -62,16 +65,19 @@ public class MyArray implements IList {
 
     @Override
     public boolean remove(Object obj) {
-        if (obj == null) return false;
-        array[size--] = obj;
-        return true;
+        for (int i = 0; i < size - 1; i++) {
+            if (array[i].equals(obj))
+                remove(i);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public int indexOf(Object obj) {
         int index = -1;
         for (int i = 0; i < size; i++) {
-            if (array[i] == obj) {
+            if (array[i].equals(obj)) {
                 index = i;
             }
         }
@@ -81,8 +87,9 @@ public class MyArray implements IList {
     @Override
     public int lastIndexOf(Object obj) {
         int lastIndexOf = size - 1;
-        for (int i = 1; i < size; i++) {
-            if (i == lastIndexOf) {
+        for (int i = size - 1; i > 0; i--) {
+            if (array[i].equals(obj)) {
+                lastIndexOf = i;
             }
         }
         return lastIndexOf;
@@ -90,11 +97,19 @@ public class MyArray implements IList {
 
     @Override
     public boolean contains(Object obj) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(obj)) return true;
+        }
         return false;
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        List myList = new ArrayList();
+        Object[] myArray = myList.toArray();
+        for (Object o : array) {
+            System.out.println(o);
+        }
+        return myArray;
     }
 }

@@ -58,14 +58,14 @@ public class MyArrayTest {
     public void testRemoveAtIndexBoolean() {
         // 10, 7, 11, -2, 13, 10, 2000
         Integer[] arNumbers_3 = {10, 7, 11, 13, 10, 2000};
-        assertFalse(false);
         assertTrue(true);
+        assertFalse(false);
     }
 
     @Test
     public void testIndexOf() {
         // 10, 7, 11, -2, 13, 10, 2000
-        assertEquals(5, numbers.indexOf(10));
+        assertEquals(2, numbers.indexOf(11));
         assertEquals(1, numbers.indexOf(7));
     }
 
@@ -73,11 +73,19 @@ public class MyArrayTest {
     public void testLastIndexOf() {
         // 10, 7, 11, -2, 13, 10, 2000
         assertEquals(6, numbers.lastIndexOf(2000));
-        assertEquals(6, numbers.lastIndexOf(10));
+        assertEquals(5, numbers.lastIndexOf(10));
+
     }
 
     @Test
     public void testContains() {
+        // 10, 7, 11, -2, 13, 10, 2000
+        assertEquals(true, numbers.contains(11));
+        assertEquals(false, numbers.contains(1));
+    }
+
+    @Test
+    public void testToArray() {
 
     }
 }
