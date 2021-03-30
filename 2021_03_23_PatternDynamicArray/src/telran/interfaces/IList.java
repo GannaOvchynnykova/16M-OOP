@@ -1,6 +1,6 @@
 package telran.interfaces;
 
-public interface IList {
+public interface IList extends Iterable<Object> {
 
     boolean add(Object obj);
 
@@ -19,4 +19,6 @@ public interface IList {
     boolean contains(Object obj);
 
     Object[] toArray();
+
+    void clear();
 }

@@ -2,13 +2,14 @@ package telran.testArray;
 
 import org.junit.Before;
 import org.junit.Test;
+import telran.interfaces.IList;
 import telran.items.MyArray;
 
 import static org.junit.Assert.*;
 
 public class MyArrayTest {
-    MyArray strings;
-    MyArray numbers;
+    IList strings;
+    IList numbers;
     Integer[] arNumbers = {10, 7, 11, -2, 13, 10, 2000};
     String[] arStrings = {"abc", "lmn", "fg", "abc"};
 
@@ -57,23 +58,46 @@ public class MyArrayTest {
     @Test
     public void testRemoveAtIndexBoolean() {
         // 10, 7, 11, -2, 13, 10, 2000
-        Integer[] arNumbers_3 = {10, 7, 11, 13, 10, 2000};
-        assertTrue(true);
-        assertFalse(false);
+        assertTrue(numbers.remove((Integer)10));
+        assertEquals(arNumbers.length-1, numbers.size());
+        assertEquals(7, numbers.get(0));
+        assertEquals(10, numbers.get(numbers.size()-2));
+        assertTrue(numbers.remove((Integer)10));
+        assertEquals(-1, numbers.indexOf(10));
+        assertFalse(numbers.remove((Integer)101));
+        assertFalse(numbers.remove(null));
+        assertFalse(numbers.remove("abc"));
     }
 
     @Test
     public void testIndexOf() {
         // 10, 7, 11, -2, 13, 10, 2000
-        assertEquals(2, numbers.indexOf(11));
-        assertEquals(1, numbers.indexOf(7));
+        //Integer[] arNumbers = {10, 7, 11, -2, 13, 10, 2000};
+        //String[] arStrings = {"abc", "lmn", "fg", "abc"};
+        assertEquals(-1, numbers.indexOf(-100));
+        assertEquals(-1, numbers.indexOf(null));
+        assertEquals(-1, numbers.indexOf("abc"));
+        assertEquals(0, numbers.indexOf(10));
+        //------------------------------------------------
+        assertEquals(0, strings.indexOf("abc"));
+        assertEquals(-1, strings.indexOf("ooo"));
+        assertEquals(-1, strings.indexOf(null));
+        assertEquals(-1, strings.indexOf(1000));
+
     }
 
     @Test
     public void testLastIndexOf() {
         // 10, 7, 11, -2, 13, 10, 2000
-        assertEquals(6, numbers.lastIndexOf(2000));
         assertEquals(5, numbers.lastIndexOf(10));
+        assertEquals(-1, numbers.lastIndexOf(-100));
+        assertEquals(-1, numbers.lastIndexOf(null));
+        assertEquals(-1, numbers.lastIndexOf("abc"));
+
+        //assertEquals(strings.size()-1, strings.indexOf("abc"));
+        assertEquals(-1, strings.lastIndexOf("ooo"));
+        assertEquals(-1, strings.lastIndexOf(null));
+        assertEquals(-1, strings.lastIndexOf(1000));
 
     }
 
@@ -81,11 +105,34 @@ public class MyArrayTest {
     public void testContains() {
         // 10, 7, 11, -2, 13, 10, 2000
         assertEquals(true, numbers.contains(11));
+        assertTrue(numbers.contains(10));
+        assertFalse(numbers.contains(101));
+        assertFalse(numbers.contains(null));
         assertEquals(false, numbers.contains(1));
     }
 
     @Test
     public void testToArray() {
+        Object[] exNumbers = {10, 7, 11, -2, 13, 10, 2000};
+        Object[] exStrings = {"abc", "lmn", "fg", "abc"};
+        assertArrayEquals(exNumbers, numbers.toArray());
+        assertArrayEquals(exStrings, strings.toArray());
+    }
 
+    @Test
+    public void testClear(){
+        numbers.clear();
+        assertEquals(0, numbers.size());
+        strings.clear();
+        assertEquals(0, strings.size());
+    }
+
+    @Test
+    public void testIterable(){
+        int index = 0;
+        for (Object o: numbers) {
+            assertEquals(arNumbers[index++], o);
+        }
+        assertEquals(arNumbers.length, index);
     }
 }

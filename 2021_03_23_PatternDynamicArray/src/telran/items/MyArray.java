@@ -1,9 +1,9 @@
 package telran.items;
 
 import telran.interfaces.IList;
+import telran.iterator.MyArrayIterator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class MyArray implements IList {
     private static final int INITIAL_SIZE = 16;
@@ -18,7 +18,6 @@ public class MyArray implements IList {
         // array = new Object[INITIAL_SIZE];
         this(INITIAL_SIZE);
     }
-
 
     @Override
     public boolean add(Object obj) {
@@ -65,38 +64,36 @@ public class MyArray implements IList {
 
     @Override
     public boolean remove(Object obj) {
-        for (int i = 0; i < size - 1; i++) {
-            if (array[i].equals(obj))
-                remove(i);
-            return true;
-        }
-        return false;
+        if (obj == null) return false;
+        int index = indexOf(obj);
+        Object result = remove(index);
+        return result != null;
     }
 
     @Override
     public int indexOf(Object obj) {
-        int index = -1;
+        if (obj == null) return -1;
         for (int i = 0; i < size; i++) {
-            if (array[i].equals(obj)) {
-                index = i;
-            }
+            if (array[i].equals(obj)) return i;
         }
-        return index;
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object obj) {
-        int lastIndexOf = size - 1;
-        for (int i = size - 1; i > 0; i--) {
-            if (array[i].equals(obj)) {
-                lastIndexOf = i;
-            }
+        int lastI = -1;
+        if (obj == null) return -1;
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(obj)) lastI = i;
         }
-        return lastIndexOf;
+        // for( int i = size-1; i>=0; i--){
+        //if (array[i].equals(obj)) return i;
+        return lastI;
     }
 
     @Override
     public boolean contains(Object obj) {
+        if (obj == null) return false;
         for (int i = 0; i < size; i++) {
             if (array[i].equals(obj)) return true;
         }
@@ -105,11 +102,29 @@ public class MyArray implements IList {
 
     @Override
     public Object[] toArray() {
-        List myList = new ArrayList();
-        Object[] myArray = myList.toArray();
-        for (Object o : array) {
-            System.out.println(o);
-        }
+        //Object[] myArray = new Object[size];
+        //for (int i = 0; i < size; i++) {
+         //   myArray[i] = array[i];
+        //}
+        //return myArray;
+        Object[] myArray = new Object[size];
+        System.arraycopy(array, 0, myArray, 0, size);
         return myArray;
+    }
+
+    @Override
+    public void clear() {
+        //for (int i = 0; i < size; i++) {
+            //array[i] = null;
+        //}
+        //size = 0;
+        Object [] temp = new Object[0];
+        array = temp;
+        size = 0;
+    }
+
+    @Override
+    public Iterator<Object> iterator() {
+        return new MyArrayIterator(this);
     }
 }
