@@ -72,13 +72,13 @@ public class MyLinkedList implements IList {
         if (obj == null) {
             for (Node x = first; x != null; x = x.next) {
                 if (obj == x.element)
-                    remove(obj);
+                    
                 return true;
             }
         } else {
             for (Node x = first; x != null; x = x.next) {
                 if (obj.equals(x.element))
-                    remove(obj);
+
                 return true;
             }
         }
