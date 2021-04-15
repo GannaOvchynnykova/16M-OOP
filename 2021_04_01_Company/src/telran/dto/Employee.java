@@ -50,6 +50,6 @@ public abstract class Employee extends Person {
                 '}';
     }
 
-    public abstract double calcPrice();
+    public abstract double calcSalary();
 
 }

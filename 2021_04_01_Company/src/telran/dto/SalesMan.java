@@ -50,7 +50,7 @@ public class SalesMan extends Employee {
     }
 
     @Override
-    public double calcPrice() {
+    public double calcSalary() {
         return baseSalary + ((totalSales / 100) * bonuse);
     }
 }

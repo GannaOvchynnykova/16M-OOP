@@ -1,6 +1,6 @@
 package telran.appl;
 
-import telran.items.Cat;
+import telran.model.Cat;
 
 import java.util.Arrays;
 import java.util.HashSet;

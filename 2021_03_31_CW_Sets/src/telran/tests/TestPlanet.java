@@ -1,7 +1,7 @@
 package telran.tests;
 
-import telran.items.Galaxy;
-import telran.items.Planet;
+import telran.model.Galaxy;
+import telran.model.Planet;
 
 public class TestPlanet {
     public static void main(String[] args) {

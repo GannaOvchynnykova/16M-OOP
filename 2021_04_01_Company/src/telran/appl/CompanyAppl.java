@@ -33,6 +33,19 @@ public class CompanyAppl {
         System.out.println(company.setEmployeeSalary(345237896, 1250) + "  setEmployeeSalary");
 
         System.out.println(company.getEmployeeWithSalary(1000, 3000));
+
+        printEmployee(emps);
+    }
+
+    public static void printEmployee (Employee [] emps){
+        for (int i = 0; i < emps.length; i++) {
+            System.out.println(emps[i]);
+            System.out.println("Salary = " + emps[i].calcSalary());
+        }
+        for (Employee e: emps) {
+            System.out.println(e);
+            System.out.println("Salary = " + e.calcSalary());
+        }
     }
 
 

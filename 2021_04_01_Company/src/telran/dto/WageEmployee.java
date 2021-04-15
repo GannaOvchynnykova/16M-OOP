@@ -50,7 +50,7 @@ public class WageEmployee extends Employee {
     }
 
     @Override
-    public double calcPrice() {
+    public double calcSalary() {
         return hours * wage;
     }
 }

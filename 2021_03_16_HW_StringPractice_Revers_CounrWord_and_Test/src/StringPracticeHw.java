@@ -1,7 +1,13 @@
 public class StringPracticeHw {
 
     public static String getStrReverse(String str) {
-        if (str == null || str.trim().isEmpty()) return null;
+        if (str == null || str.trim().isEmpty())
+            return null;
+        String rev = "";
+        for (int i = str.length()-1; i >=0 ; i--) {
+            rev+=str.charAt(i);
+        }
+        return rev.trim();
 
         //_________1 variant________
         //return new StringBuffer(str).reverse().toString  - reshenie v odny stroky
@@ -17,20 +23,22 @@ public class StringPracticeHw {
         //return new String(charArray);
 
         //----------3 variant----------
-        String result = "";
+        /*String result = "";
         for (int i = str.length() - 1; i >= 0; i--) {
             result += str.charAt(i);
         }
-        return result;
+        return result; */
     }
 
-    public static int getCountWords(String sent, String word) {
-        if (sent.trim().isEmpty() || sent == null || word.trim().isEmpty() || word == null) return -1;
-        String[] sentArray = sent.split(" ");
+    public static Integer getCountWords(String sent, String word) {
+        if (sent.trim().isEmpty() || sent == null || word.trim().isEmpty() || word == null)
+            return null;
         int count = 0;
-        word = word.trim();
-        for (String s : sentArray) {
-            if (s.equals(word)) count++;
+        String[] sentArray = sent.split(" ");
+        for (int i = 0; i < sentArray.length ; i++) {
+            if (sentArray[i].equalsIgnoreCase(word.trim())) {
+                count++;
+            }
         }
         return count;
     }

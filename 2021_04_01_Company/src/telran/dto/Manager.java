@@ -35,7 +35,7 @@ public class Manager extends Employee {
     }
 
     @Override
-    public double calcPrice() {
+    public double calcSalary() {
         return baseSalary * grade;
     }
 

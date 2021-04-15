@@ -1,6 +1,7 @@
 package telran.model;
 
 import telran.dto.Employee;
+import telran.dto.SalesMan;
 import telran.interfaces.ICompany;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class Company implements ICompany {
             str += "Company: " + e.getCompany() + "\n";
             str += "Employee: " + e.getId() + "\n";
             str += "Name: " + e.getName() + "\n";
-            str += "Salary: " + e.calcPrice() + "\n";
+            str += "Salary: " + e.calcSalary() + "\n";
             count++;
         }
         return str;
@@ -80,6 +81,8 @@ public class Company implements ICompany {
     public double getCompanyProfit() {
         double temp = 0.0;
         for (Employee e : employeeTreeSet) {
+            if (e instanceof SalesMan)
+                temp+=((SalesMan) e).getTotalSales();
         }
         return temp;
     }
@@ -88,7 +91,7 @@ public class Company implements ICompany {
     public double getCompanyExpenses() {
         double temp = 0.0;
         for (Employee e : employeeTreeSet) {
-            temp += e.calcPrice();
+            temp += e.calcSalary();
         }
         return temp;
     }
@@ -115,7 +118,7 @@ public class Company implements ICompany {
     public List<Employee> getEmployeeWithSalary(double start, double finish) {
         List<Employee> result = new ArrayList<Employee>();
         for (Employee e : employeeTreeSet) {
-            if (e.calcPrice() > start && e.calcPrice() < finish)
+            if (e.calcSalary() > start && e.calcSalary() < finish)
                 result.add(e);
         }
         return result;
