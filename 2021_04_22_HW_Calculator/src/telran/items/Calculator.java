@@ -5,7 +5,7 @@ public class Calculator {
         System.out.println("Start program");
         try {
             Integer x = getNumbers(args[0]);
-            Integer y = getNumbers(args[0]);
+            Integer y = getNumbers(args[1]);
             System.out.println("Number x =  " + x);
             System.out.println("Number y =  " + y);
             System.out.println("Sum : x + y =  " + (x + y));
