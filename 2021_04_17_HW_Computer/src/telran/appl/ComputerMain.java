@@ -16,12 +16,14 @@ public class ComputerMain {
         Computer comp3 = new Computer("Acer", "Intel", 8);
         Computer comp4 = new Computer("Apple", "Pentium", 4);
         Computer comp5 = new Computer("Asus", "Core i7", 8);
+        Computer comp6 = new Computer("Asus", "Core i7", 8);
 
         Double comp01 = 7.88;
         Double comp02 = 5.44;
         Double comp03 = 6.22;
         Double comp04 = 6.89;
         Double comp05 = 8.00;
+        Double comp06 = 133.3;
 
         comps.put(comp1, comp01);
         comps.put(comp2, comp02);
@@ -29,11 +31,22 @@ public class ComputerMain {
         comps.put(comp4, comp04);
         comps.put(comp5, comp05);
 
+        //comps.put(comp6, comp06);
+        comps.putIfAbsent(comp6, comp06);  // esli odikovie lychsche tak!!!!!!!
+
         System.out.println(comps);
         System.out.println("===============================================");
+        printMap(comps);
         Double toWeight = 7.00;
         getСomputersLighter(comps, toWeight);
 
+    }
+
+    private static void printMap(HashMap<Computer, Double> comps) {
+        for (Map.Entry<Computer, Double> e: comps.entrySet()) {
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+        System.out.println("____-------------______________-");
     }
 
     private static List<Computer> getСomputersLighter(HashMap<Computer, Double> comps, Double toWeight) {
