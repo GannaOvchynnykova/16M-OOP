@@ -1,7 +1,7 @@
 public class PrimeNumber {
     public static void main(String[] args) {
         // Dano chislo naiti vse prostie chisla
-        findAllPrimeNumber(1000_000);
+        findAllPrimeNumber(1000);
     }
 
     private static void findAllPrimeNumber(int n) {

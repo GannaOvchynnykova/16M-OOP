@@ -1,3 +1,5 @@
+package telran.string;
+
 public class StringPracticeHw {
 
     public static String getStrReverse(String str) {
