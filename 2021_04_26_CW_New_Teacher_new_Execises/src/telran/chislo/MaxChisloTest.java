@@ -21,6 +21,6 @@ public class MaxChisloTest {
 
     @Test
     public void testfindRepeatNumb(){
-        assertEquals(4, MaxChislo.findRepeatNumb(numb, 2));
+        assertEquals(4, MaxChislo.findRepeatNumb(numb));
     }
 }
