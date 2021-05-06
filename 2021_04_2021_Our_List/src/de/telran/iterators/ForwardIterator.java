@@ -5,6 +5,7 @@ import java.util.Iterator;
 public class ForwardIterator <T> implements Iterator<T> {
     private int position;
     private Object[] source;
+    private int size;
 
     public ForwardIterator(T source) {
         this.source = (Object[]) source;

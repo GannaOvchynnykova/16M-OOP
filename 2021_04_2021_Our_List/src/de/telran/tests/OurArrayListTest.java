@@ -53,6 +53,10 @@ class OurArrayListTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             integerList.get(-1);
         });
+
+        assertEquals(3, integerList.size());
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 package de.telran.interfaces;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public interface IOurList<E> extends Iterable<E> {
@@ -58,4 +59,10 @@ public interface IOurList<E> extends Iterable<E> {
     public boolean contains(E element);
 
     Iterator<E> backwardIterator();
+
+    /**
+     * The method must sort this list according to the
+     * @param comparator
+     */
+    public void sort (Comparator<E> comparator);
 }

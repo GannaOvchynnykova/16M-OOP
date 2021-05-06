@@ -1,8 +1,10 @@
 package de.telran.appl;
 
+import de.telran.comparators.IntegerNaturalComparator;
 import de.telran.interfaces.IOurList;
 import de.telran.items.OurArrayList;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class Main {
@@ -38,6 +40,26 @@ public class Main {
         while (listBackIterator.hasNext()){
             String current = listBackIterator.next();
             System.out.println(current);
+        }
+
+        System.out.println("--------------------------------------------------------------------------");
+        //how to use comparators
+        IOurList<Integer> numb = new OurArrayList<>();
+        numb.add(-16);
+        numb.add(-25);
+        numb.add(7);
+        numb.add(1);
+        numb.add(2);
+
+        for (int n : numb){
+            System.out.print(n + " ");
+        }
+        System.out.println();
+
+        Comparator<Integer> integerComparator = new IntegerNaturalComparator();
+        numb.sort(integerComparator);
+        for (int n : numb){
+            System.out.print(n + " ");
         }
     }
 }

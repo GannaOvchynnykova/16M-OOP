@@ -1,7 +1,10 @@
 package de.telran.items;
 
+import de.telran.comparators.IntegerNaturalComparator;
 import de.telran.interfaces.IOurList;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 
 //TODO implements this
@@ -163,6 +166,12 @@ public class OurArrayList<E> implements IOurList<E> {
             position++;
             return res;
          }
+    }
+
+    //-----------------------------------------------------------
+    @Override
+    public void sort(Comparator<E> comparator) {
+        Arrays.sort(source, new  IntegerNaturalComparator());
     }
 }
 
