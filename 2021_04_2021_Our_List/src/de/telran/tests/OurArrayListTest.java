@@ -1,77 +1,58 @@
 package de.telran.tests;
 
-import de.telran.dto.OurArrayList;
 import de.telran.interfaces.IOurList;
-import org.junit.jupiter.api.BeforeEach;
+import de.telran.items.OurArrayList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class OurArrayListTest {
-    IOurList<Integer> integerList;
-    Integer[] arNumbers = {10, 7, 11, -2, 13, 10, 2000};
+    //TODO come up with all possible cases to test
 
-    @BeforeEach
-    void setUp() {
-        integerList = new OurArrayList<>();
-        for (Integer i : arNumbers) {
-            integerList.add(i);
-        }
+    IOurList<Integer> integerList = new OurArrayList<>();
+
+    @Test
+    public void testSize_newList() {
+        assertEquals(0, integerList.size());
     }
 
     @Test
-    void get() {
-        assertEquals(10, integerList.get(0));
-    }
+    public void testAddAndGet_severalElements() {
+        integerList.add(7);
+        integerList.add(17);
+        integerList.add(5);
 
-    @Test
-    void add() {
-        assertTrue(integerList.add(2));
-        assertEquals(integerList.size(), arNumbers.length+1);
-    }
+        assertEquals(3, integerList.size());
 
-    @Test
-    void removeIndex() {
-        // 10, 7, 11, -2, 13, 10, 2000
-        Integer[] arNumbers_2 = {10, 7, 11, 13, 10, 2000};
-
-        assertEquals(null, integerList.remove(7));
-        assertEquals(null, integerList.remove(17));
-
-        Integer res = (Integer) integerList.remove(3);
-        assertEquals(-2, (int) res);
-
-        assertEquals(arNumbers.length - 1, integerList.size());
-        for (int i = 0; i < integerList.size(); i++) {
-            assertEquals(arNumbers_2[i], integerList.get(i));
-        }
-    }
-
-    @Test
-    void testRemove() {
-        // 10, 7, 11, -2, 13, 10, 2000
-        assertTrue(integerList.remove((Integer)10));
-        assertEquals(arNumbers.length-1, integerList.size());
         assertEquals(7, integerList.get(0));
-        assertEquals(10, integerList.get(integerList.size()-2));
-        assertTrue(integerList.remove((Integer)10));
+        assertEquals(17, integerList.get(1));
+        assertEquals(5, integerList.get(2));
     }
 
     @Test
-    void set() {
-        // 10, 7, 11, -2, 13, 10, 2000
-        assertEquals(11, integerList.set(2, 5));
-        assertEquals(integerList.size(), arNumbers.length);
-        assertEquals(10, integerList.set(0, 5));
+    public void testAddAndGet_severalElements_throwsIOOBE() {
+        integerList.add(-7);
+        integerList.add(-17);
+        integerList.add(5);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            integerList.get(-3);
+        });
+
+        // another way
+        try {
+            integerList.get(-3);
+            fail();
+        } catch (IndexOutOfBoundsException e) {
+            assertTrue(true);
+        }
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            integerList.get(3);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            integerList.get(-1);
+        });
     }
 
-    @Test
-    void contains() {
-        // 10, 7, 11, -2, 13, 10, 2000
-        assertEquals(true, integerList.contains(11));
-        assertTrue(integerList.contains(10));
-        assertFalse(integerList.contains(101));
-        assertFalse(integerList.contains(null));
-        assertEquals(false, integerList.contains(1));
-    }
 }
