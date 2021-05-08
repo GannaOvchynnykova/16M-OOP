@@ -11,7 +11,7 @@ public interface IOurList<E> extends Iterable<E> {
      * @return the element if the index is between 0 und size-1
      * @throws IndexOutOfBoundsException otherwise
      */
-    public E get(int index);
+   E get(int index);
 
     /**
      * adds en element to the list
@@ -19,7 +19,7 @@ public interface IOurList<E> extends Iterable<E> {
      * @param element
      * @return
      */
-    public void add(E element);
+    void add(E element);
 
     /**
      * removes the element by the index from the collection
@@ -28,7 +28,7 @@ public interface IOurList<E> extends Iterable<E> {
      * @return element to be removed
      * @throws IndexOutOfBoundsException in the index incorrect
      */
-    public E remove(int index);
+    E remove(int index);
 
     /**
      * removes the element if found in the collection
@@ -36,12 +36,12 @@ public interface IOurList<E> extends Iterable<E> {
      * @param element to remove
      * @return true if found and removed, false otherwise
      */
-    public boolean remove(E element);
+    boolean remove(E element);
 
     /**
      * @return size of the collection
      */
-    public int size();
+     int size();
 
     /**
      * puts the element by the index
@@ -50,7 +50,7 @@ public interface IOurList<E> extends Iterable<E> {
      * @param element
      * @throws IndexOutOfBoundsException in the index is incorrect
      */
-    public void set(int index, E element);
+    void set(int index, E element);
 
     /**
      * @param element
@@ -58,11 +58,33 @@ public interface IOurList<E> extends Iterable<E> {
      */
     public boolean contains(E element);
 
+    /**
+     * The method returns an iterator which iterates in the backward order.
+     * The iterator must throw IndexOutOfBoundsException if the it.next() is invoked and no elements
+     * remain to iterate over
+     *
+     * @return iterator in backward order
+     */
     Iterator<E> backwardIterator();
 
     /**
-     * The method must sort this list according to the
+     * The method returns an iterator which iterates in the backward order.
+     * The iterator must throw IndexOutOfBoundsException if the it.next() is invoked and no elements
+     * remain to iterate over
+     *
+     * @return iterator in regular order
+     */
+    @Override
+    Iterator<E> iterator();
+
+    /**
+     * The method must sort this list according to the comparator rules
+     *
      * @param comparator
      */
-    public void sort (Comparator<E> comparator);
+     void sort(Comparator<E> comparator);
+
+     E max (Comparator<E> comparator);
+         E min (Comparator<E> comparator);
+
 }

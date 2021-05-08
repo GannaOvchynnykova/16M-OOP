@@ -1,9 +1,7 @@
 package de.telran.items;
 
-import de.telran.comparators.IntegerNaturalComparator;
 import de.telran.interfaces.IOurList;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 
@@ -115,12 +113,10 @@ public class OurArrayList<E> implements IOurList<E> {
     private static class BackwardIterator<T> implements Iterator<T> {
         int position;
         T[] source;
-        int size;
 
         public BackwardIterator(T[] source, int size) {
             this.source = source;
-            this.size = size;
-            position = size-1;
+            position = size - 1;
         }
 
         @Override
@@ -130,6 +126,8 @@ public class OurArrayList<E> implements IOurList<E> {
 
         @Override
         public T next() {
+            if (position < 0)
+                throw new IndexOutOfBoundsException();
             T res = source[position];
             position--;
             return res;
@@ -137,7 +135,7 @@ public class OurArrayList<E> implements IOurList<E> {
     }
 
     //--------------------------------------------------------------------------------------------------
-     @Override
+    @Override
     public Iterator<E> iterator() {
         Iterator<E> iterator = new ForwardIterator<>((E[]) source, size);
         return iterator;
@@ -162,16 +160,75 @@ public class OurArrayList<E> implements IOurList<E> {
 
         @Override
         public T next() {
+            if (position >= size)
+                throw new IndexOutOfBoundsException();
             T res = source[position];
             position++;
             return res;
-         }
+        }
     }
 
     //-----------------------------------------------------------
     @Override
     public void sort(Comparator<E> comparator) {
-        Arrays.sort(source, new  IntegerNaturalComparator());
+        E element;
+        for (int j = 0; j < size; j++) {
+            for (int i = j + 1; i < size; i++) {
+                if (comparator.compare((E) source[j], (E) source[i]) > 0) {
+                    element = (E) source[j];
+                    source[j] = source[i];
+                    source[i] = element;
+                }
+            }
+        }
+
+        //   one more variant
+
+        /*for (int i = 0; i < size; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < size; j++) {
+                E currentMin = (E) source[minIndex];
+                if (comparator.compare(currentMin, (E) source[j]) > 0){
+                    minIndex = j;
+                }
+            }
+            E temp = (E) source[i];
+            source[i] = source[minIndex];
+            source[minIndex] = temp;
+        }*/
+    }
+
+    @Override
+    public E max(Comparator<E> comparator) {
+        E element = null;
+        for (int j = 0; j < size; j++) {
+            for (int i = j + 1; i < size; i++) {
+                if (comparator.compare((E) source[j], (E) source[i]) > 0) {
+                    element = (E) source[j];
+                    source[j] = source[i];
+                    source[i] = element;
+                    element = (E) source[size-1];
+                }
+            }
+        }
+        return element;
+    }
+
+
+    @Override
+    public E min(Comparator<E> comparator) {
+        E element = null;
+        for (int j = 0; j < size; j++) {
+            for (int i = j + 1; i < size; i++) {
+                if (comparator.compare((E) source[j], (E) source[i]) > 0) {
+                    element = (E) source[j];
+                    source[j] = source[i];
+                    source[i] = element;
+                    element = (E) source[0];
+                }
+            }
+        }
+        return element;
     }
 }
 
